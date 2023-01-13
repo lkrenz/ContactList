@@ -8,13 +8,19 @@
  * @author: Ms. Namasivayam & Mr. Blick
  * @version: 2022-2023
  */
-
+import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.Scanner;
 public class ContactList
 {
     // TODO: Create your array contacts
-
+    private ArrayList<Person> contacts;
     // TODO: Write a Constructor
 
+    public ContactList()
+    {
+        this.contacts = new ArrayList<Person>();
+    }
     public void printMenuOptions() {
         System.out.println("Menu: ");
         System.out.println("1. Add Contact");
@@ -34,13 +40,25 @@ public class ContactList
      */
     public void addContact() {
         // TODO: Complete the addContact method
+
     }
 
     /**
      * Loops through and prints all contacts
      */
     public void printContacts() {
-        // TODO: Complete the printContacts method
+        Scanner s = new Scanner(System.in);
+        System.out.println("Select a type of contact to add: "
+                            + "\n Student: 1\n Worker: 2");
+        if (s.nextInt() == 1)
+        {
+            String firstName;
+            String lastName;
+
+            System.out.println("Please fill in the following information");
+            System.out.println("Enter their first name");
+        }
+
     }
 
     /**
