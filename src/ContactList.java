@@ -40,6 +40,32 @@ public class ContactList
      */
     public void addContact() {
         // TODO: Complete the addContact method
+        Scanner s = new Scanner(System.in);
+        int type;
+        String firstName;
+        String lastName;
+        String phoneNumber;
+
+        System.out.println("Select a type of contact to add: "
+                + "\n Student: 1\n Worker: 2");
+        type = s.nextInt();
+        System.out.println("Please fill in the following information");
+        System.out.println("First Name: ");
+        firstName = s.nextLine();
+        System.out.println("Last Name: ");
+        lastName = s.nextLine();
+        System.out.println("Phone Number: ");
+        phoneNumber = s.nextLine();
+        if (type = 1)
+        {
+            System.out.println("Grade: ");
+            contacts.add(new Student(firstName, lastName, phoneNumber, s.nextInt());
+        }
+        else if (type = 2)
+        {
+            System.out.println("Salary: ");
+            contacts.add(new Worker(firstName, lastName, phoneNumber, s.nextInt());
+        }
 
     }
 
@@ -47,18 +73,10 @@ public class ContactList
      * Loops through and prints all contacts
      */
     public void printContacts() {
-        Scanner s = new Scanner(System.in);
-        System.out.println("Select a type of contact to add: "
-                            + "\n Student: 1\n Worker: 2");
-        if (s.nextInt() == 1)
+        for (Person p : contacts)
         {
-            String firstName;
-            String lastName;
-
-            System.out.println("Please fill in the following information");
-            System.out.println("Enter their first name");
+            System.out.println(p);
         }
-
     }
 
     /**
@@ -68,10 +86,47 @@ public class ContactList
      */
     public void sort(int sortBy) {
         // TODO: Complete the sort method
+        for (int i = 0; i < contacts.size() - 1; i++)
+        {
+            for (int j = 0; j < contacts.size() - i; j++)
+            {
+                if (sortBy == 0)
+                {
+                    if (contacts.get(j).getFirstName().compareTo(contacts.get(j+1).getFirstName()) == 1)
+                    {
+                        contacts.set(j+1, contacts.set(j, contacts.get(j+1)));
+                    }
+                }
+                else if (sortBy == 1)
+                {
+                    if (contacts.get(j).getLastName().compareTo(contacts.get(j+1).getLastName()) == 1)
+                    {
+                        contacts.set(j+1, contacts.set(j, contacts.get(j+1)));
+                    }
+                }
+                else
+                {
+                    if (contacts.get(j).getPhoneNumber().compareTo(contacts.get(j+1).getPhoneNumber()) == 1)
+                    {
+                        contacts.set(j+1, contacts.set(j, contacts.get(j+1)));
+                    }
+                }
+
+            }
+        }
     }
 
     // TODO: Write searchByFirstName
+    public Person searchByFirstName(String name)
+    {
+        sort(0);
+        String name1 = "";
+        while (!name.equals(name1))
+        {
 
+        }
+
+    }
     // TODO: Write searchByLastName
 
     // TODO: Write searchByPhoneNumber
