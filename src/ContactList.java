@@ -67,7 +67,6 @@ public class ContactList
             System.out.println("Salary: ");
             contacts.add(new Worker(firstName, lastName, phoneNumber, s.nextInt()));
         }
-
     }
 
     /**
@@ -89,30 +88,29 @@ public class ContactList
         // TODO: Complete the sort method
         for (int i = 0; i < contacts.size() - 1; i++)
         {
-            for (int j = 0; j < contacts.size() - i; j++)
+            for (int j = 0; j < contacts.size() - (i + 1); j++)
             {
                 if (sortBy == 0)
                 {
-                    if (contacts.get(j).getFirstName().compareTo(contacts.get(j+1).getFirstName()) == 1)
+                    if (contacts.get(j).getFirstName().compareTo(contacts.get(j+1).getFirstName()) > 0)
                     {
                         contacts.set(j+1, contacts.set(j, contacts.get(j+1)));
                     }
                 }
                 else if (sortBy == 1)
                 {
-                    if (contacts.get(j).getLastName().compareTo(contacts.get(j+1).getLastName()) == 1)
+                    if (contacts.get(j).getLastName().compareTo(contacts.get(j+1).getLastName()) > 0)
                     {
                         contacts.set(j+1, contacts.set(j, contacts.get(j+1)));
                     }
                 }
                 else
                 {
-                    if (contacts.get(j).getPhoneNumber().compareTo(contacts.get(j+1).getPhoneNumber()) == 1)
+                    if (contacts.get(j).getPhoneNumber().compareTo(contacts.get(j+1).getPhoneNumber()) > 0)
                     {
                         contacts.set(j+1, contacts.set(j, contacts.get(j+1)));
                     }
                 }
-
             }
         }
     }
@@ -159,7 +157,6 @@ public class ContactList
         {
             if(number.equals(contacts.get(i).getPhoneNumber()))
             {
-
                 return contacts.get(i);
             }
         }
@@ -185,12 +182,11 @@ public class ContactList
      */
     public void run() {
         Scanner s = new Scanner(System.in);
+        int input = 50;
         System.out.println("Welcome to your Contacts List");
-        System.out.println("Please pick from the following menu options");
-        printMenuOptions();
-        int input = s.nextInt();
         while (input != 0)
         {
+            System.out.println("Please pick from the following menu options");
             printMenuOptions();
             input = s.nextInt();
             if (input == 0)
@@ -198,6 +194,7 @@ public class ContactList
             if (input == 1)
             {
                 addContact();
+                waiting();
             }
             if (input == 2)
             {
@@ -208,15 +205,18 @@ public class ContactList
             {
                 sort(1);
                 printContacts();
+                s.nextLine();
             }
             if (input == 4)
             {
                 sort(2);
                 printContacts();
+                s.nextLine();
             }
             if (input == 5)
             {
                 listStudents();
+                s.nextLine();
             }
             if (input == 6)
             {
@@ -229,6 +229,7 @@ public class ContactList
                 {
                     System.out.println(p);
                 }
+                s.nextLine();
             }
             if (input == 7)
             {
@@ -241,6 +242,7 @@ public class ContactList
                 {
                     System.out.println(p);
                 }
+                s.nextLine();
             }
             if(input == 8)
             {
@@ -253,11 +255,18 @@ public class ContactList
                 {
                     System.out.println(p);
                 }
+                s.nextLine();
             }
         }
         // TODO: Complete the run method
     }
 
+    public void waiting()
+    {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Press Enter to Continue");
+        s.nextLine();
+    }
 
     public static void main(String[] args)
     {
