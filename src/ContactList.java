@@ -49,6 +49,7 @@ public class ContactList
         System.out.println("Select a type of contact to add: "
                 + "\n Student: 1\n Worker: 2");
         type = s.nextInt();
+        s.nextLine();
         System.out.println("Please fill in the following information");
         System.out.println("First Name: ");
         firstName = s.nextLine();
@@ -56,15 +57,15 @@ public class ContactList
         lastName = s.nextLine();
         System.out.println("Phone Number: ");
         phoneNumber = s.nextLine();
-        if (type = 1)
+        if (type == 1)
         {
             System.out.println("Grade: ");
-            contacts.add(new Student(firstName, lastName, phoneNumber, s.nextInt());
+            contacts.add(new Student(firstName, lastName, phoneNumber, s.nextInt()));
         }
-        else if (type = 2)
+        else if (type == 2)
         {
             System.out.println("Salary: ");
-            contacts.add(new Worker(firstName, lastName, phoneNumber, s.nextInt());
+            contacts.add(new Worker(firstName, lastName, phoneNumber, s.nextInt()));
         }
 
     }
@@ -117,25 +118,65 @@ public class ContactList
     }
 
     // TODO: Write searchByFirstName
-    public Person searchByFirstName(String name)
+    public Person searchByFirstName()
     {
-        sort(0);
-        String name1 = "";
-        while (!name.equals(name1))
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter a First Name: ");
+        String name = s.nextLine();
+        for (int i = 0; i < contacts.size(); i++)
         {
-
+            if(name.equals(contacts.get(i).getFirstName()))
+            {
+                return contacts.get(i);
+            }
         }
-
+        return null;
     }
     // TODO: Write searchByLastName
 
+    public Person searchByLastName()
+    {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter a Last Name: ");
+        String name = s.nextLine();
+        for (int i = 0; i < contacts.size(); i++)
+        {
+            if(name.equals(contacts.get(i).getLastName()))
+            {
+                return contacts.get(i);
+            }
+        }
+        return null;
+    }
     // TODO: Write searchByPhoneNumber
 
+    public Person searchByPhoneNumber()
+    {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter a Phone Number: ");
+        String number = s.nextLine();
+        for (int i = 0; i < contacts.size(); i++)
+        {
+            if(number.equals(contacts.get(i).getPhoneNumber()))
+            {
+
+                return contacts.get(i);
+            }
+        }
+        return null;
+    }
     /**
      * Lists just the Student objects in the Contact List
      */
     public void listStudents() {
         // TODO: Complete the listStudents method
+        for (int i = 0; i < contacts.size(); i++)
+        {
+            if (contacts.get(i) instanceof Student)
+            {
+                System.out.println(contacts.get(i));
+            }
+        }
     }
 
     /**
@@ -143,10 +184,77 @@ public class ContactList
      * until the user exits
      */
     public void run() {
+        Scanner s = new Scanner(System.in);
         System.out.println("Welcome to your Contacts List");
         System.out.println("Please pick from the following menu options");
         printMenuOptions();
-
+        int input = s.nextInt();
+        while (input != 0)
+        {
+            printMenuOptions();
+            input = s.nextInt();
+            if (input == 0)
+                break;
+            if (input == 1)
+            {
+                addContact();
+            }
+            if (input == 2)
+            {
+                sort(0);
+                printContacts();
+            }
+            if (input == 3)
+            {
+                sort(1);
+                printContacts();
+            }
+            if (input == 4)
+            {
+                sort(2);
+                printContacts();
+            }
+            if (input == 5)
+            {
+                listStudents();
+            }
+            if (input == 6)
+            {
+                Person p = searchByFirstName();
+                if (p == null)
+                {
+                    System.out.println("No Contacts Found");
+                }
+                else
+                {
+                    System.out.println(p);
+                }
+            }
+            if (input == 7)
+            {
+                Person p = searchByLastName();
+                if (p == null)
+                {
+                    System.out.println("No Contacts Found");
+                }
+                else
+                {
+                    System.out.println(p);
+                }
+            }
+            if(input == 8)
+            {
+                Person p = searchByPhoneNumber();
+                if (p == null)
+                {
+                    System.out.println("No Contacts Found");
+                }
+                else
+                {
+                    System.out.println(p);
+                }
+            }
+        }
         // TODO: Complete the run method
     }
 
