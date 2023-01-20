@@ -124,6 +124,7 @@ public class ContactList
             if (name.equals(p.getFirstName()))
                 return p;
         }
+        System.out.println(name + " is not in this list.");
         return null;
     }
 
@@ -138,6 +139,7 @@ public class ContactList
             if (name.equals(p.getLastName()))
                 return p;
         }
+        System.out.println(name + " is not in this list.");
         return null;
     }
 
@@ -152,6 +154,7 @@ public class ContactList
             if (number.equals(p.getPhoneNumber()))
                 return p;
         }
+        System.out.println(number + " is not in this list.");
         return null;
     }
 
@@ -220,11 +223,7 @@ public class ContactList
             {
                 //Searches for a contact with the provided first name
                 Person p = searchByFirstName();
-                if (p == null)
-                {
-                    System.out.println("No Contacts Found");
-                }
-                else
+                if (p != null)
                 {
                     System.out.println(p);
                 }
@@ -234,11 +233,7 @@ public class ContactList
             {
                 //Searches for a contact with the provided last name
                 Person p = searchByLastName();
-                if (p == null)
-                {
-                    System.out.println("No Contacts Found");
-                }
-                else
+                if (p != null)
                 {
                     System.out.println(p);
                 }
@@ -248,11 +243,7 @@ public class ContactList
             {
                 //Searches for a contact with the provided last name
                 Person p = searchByPhoneNumber();
-                if (p == null)
-                {
-                    System.out.println("No Contacts Found");
-                }
-                else
+                if (p != null)
                 {
                     System.out.println(p);
                 }
